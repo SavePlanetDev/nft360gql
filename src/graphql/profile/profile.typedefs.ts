@@ -14,6 +14,7 @@ export const tdProfile = `
         userId: String!
         result: Boolean!
         msg: String
+        profile: ProfileData
     }
 
     input CreateProfileDTO {
