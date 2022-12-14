@@ -1,0 +1,4 @@
+*.env
+/node_modules
+/build
+nft360-db.json
