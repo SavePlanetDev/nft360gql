@@ -1,7 +1,7 @@
 import Joi, { ValidationResult } from "joi";
 import { CreateRegisterDTO } from "./register.model";
 
-export const schema = Joi.object({
+const schema = Joi.object({
   userId: Joi.string().not().empty(),
   username: Joi.string().not().empty(),
   email: Joi.string().email({

@@ -1,13 +1,15 @@
 import { registers } from "../mock";
-export const qRegister = `
+const qRegister = `
     extend type Query {
         getAllRegister: [RegisterData]
         getRegisterByUserId(userId: String!): RegisterData
     } 
 `;
 
-export const resRegister = {
+const resRegister = {
   Query: {
     getAllRegister: () => registers,
   },
 };
+
+export { qRegister, resRegister };

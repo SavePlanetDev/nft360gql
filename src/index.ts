@@ -1,3 +1,5 @@
+import { config } from "dotenv";
+config();
 import { ApolloServer, BaseContext } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
@@ -9,11 +11,14 @@ import { json } from "body-parser";
 
 import schema from "./graphql";
 
+const port = process.env.PORT! || 4000;
 const app = express();
 const httpServer = http.createServer(app);
 
 const apolloServer = new ApolloServer<BaseContext>({
   schema,
+  includeStacktraceInErrorResponses:
+    process.env.NODE_ENV! == "prod" ? false : true,
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
@@ -28,9 +33,9 @@ const apolloServer = new ApolloServer<BaseContext>({
 })();
 
 (async () => {
-  await new Promise<void>((resolve) =>
-    httpServer.listen({ port: 4000 }, resolve)
-  );
+  await new Promise<void>((resolve) => httpServer.listen({ port }, resolve));
 })();
 
-console.log(`server ready at http://localhost:${4000}/graphql`);
+console.log(
+  `${process.env.NODE_ENV} server ready at http://localhost:${port}/graphql`
+);

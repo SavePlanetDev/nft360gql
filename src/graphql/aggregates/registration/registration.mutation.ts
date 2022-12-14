@@ -1,5 +1,5 @@
 import { BaseContext } from "@apollo/server";
-import { createRegister } from "../../register/register.mutation";
+import { createRegister } from "../../register/register.controller";
 import { createProfile } from "../../profile/profile.mutation";
 import { CreateRegisterDTO } from "../../register/register.model";
 

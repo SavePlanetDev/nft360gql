@@ -9,6 +9,13 @@ export interface IRegister {
   active: boolean;
 }
 
+export interface RegisterResponse {
+  userId: string;
+  result: boolean;
+  msg?: string;
+  registration: IRegister;
+}
+
 export interface CreateRegisterDTO {
   userId: string;
   username: string;

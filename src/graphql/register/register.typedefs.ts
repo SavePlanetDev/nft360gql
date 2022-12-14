@@ -14,6 +14,7 @@ export const tdRegister = `
         username: String!
         result: Boolean!
         msg: String
+        registration: RegisterData
     }
 
     input CreateRegisterDTO {
